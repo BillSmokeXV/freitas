@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FREITAS SAT - Rastreamento e Recuperação Veicular</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'azul-escuro': '#1e3a8a',
+                        'azul-medio': '#3b82f6',
+                        'laranja': '#f97316',
+                        'laranja-claro': '#fb923c'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.8s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header -->
+    <header class="bg-azul-escuro shadow-lg fixed w-full top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="bg-laranja p-2 rounded-lg">
+                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                </div>
+                <h1 class="text-2xl font-bold text-white">FREITAS SAT</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#servicos" class="text-white hover:text-laranja transition-colors">Serviços</a>
+                <a href="#sobre" class="text-white hover:text-laranja transition-colors">Sobre</a>
+                <a href="#contato" class="text-white hover:text-laranja transition-colors">Contato</a>
+            </nav>
+            <button class="bg-laranja text-white px-6 py-2 rounded-lg font-semibold hover:bg-laranja-claro transition-colors">
+                Solicitar Orçamento
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-24 pb-16 text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="slide-in">
+                    <h2 class="text-5xl md:text-6xl font-bold mb-6">
+                        Proteja Seu Veículo com
+                        <span class="text-laranja">Tecnologia Avançada</span>
+                    </h2>
+                    <p class="text-xl md:text-2xl mb-8 opacity-90">
+                        Rastreamento 24h, monitoramento inteligente e equipe de pronta resposta para recuperação imediata
+                    </p>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <button class="bg-laranja text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-laranja-claro transition-all pulse-animation">
+                            🚨 Ativar Proteção Agora
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-azul-escuro transition-all">
+                            📞 Falar com Especialista
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Hero Image -->
+                <div class="flex justify-center lg:justify-end">
+                    <div class="relative">
+                        <!-- Carro SVG -->
+                        <svg class="w-96 h-64" viewBox="0 0 400 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Fundo com ondas -->
+                            <circle cx="200" cy="125" r="120" fill="rgba(249, 115, 22, 0.1)" class="animate-pulse"/>
+                            <circle cx="200" cy="125" r="80" fill="rgba(249, 115, 22, 0.2)" class="animate-pulse"/>
+                            
+                            <!-- Carro -->
+                            <g transform="translate(50, 80)">
+                                <!-- Corpo do carro -->
+                                <rect x="20" y="40" width="260" height="60" rx="15" fill="#f97316"/>
+                                <rect x="40" y="20" width="220" height="40" rx="20" fill="#ea580c"/>
+                                
+                                <!-- Janelas -->
+                                <rect x="60" y="25" width="60" height="30" rx="5" fill="#1e3a8a" opacity="0.8"/>
+                                <rect x="140" y="25" width="80" height="30" rx="5" fill="#1e3a8a" opacity="0.8"/>
+                                <rect x="240" y="25" width="60" height="30" rx="5" fill="#1e3a8a" opacity="0.8"/>
+                                
+                                <!-- Rodas -->
+                                <circle cx="80" cy="100" r="25" fill="#374151"/>
+                                <circle cx="80" cy="100" r="15" fill="#6b7280"/>
+                                <circle cx="220" cy="100" r="25" fill="#374151"/>
+                                <circle cx="220" cy="100" r="15" fill="#6b7280"/>
+                                
+                                <!-- Faróis -->
+                                <circle cx="290" cy="60" r="8" fill="#fbbf24"/>
+                                <circle cx="290" cy="80" r="8" fill="#ef4444"/>
+                                
+                                <!-- Antena GPS -->
+                                <rect x="150" y="10" width="3" height="15" fill="#1e3a8a"/>
+                                <circle cx="151.5" cy="8" r="4" fill="#f97316"/>
+                            </g>
+                            
+                            <!-- Sinais GPS -->
+                            <g class="animate-pulse">
+                                <path d="M200 50 L190 40 L210 40 Z" fill="#f97316" opacity="0.6"/>
+                                <path d="M220 60 L210 50 L230 50 Z" fill="#f97316" opacity="0.4"/>
+                                <path d="M180 60 L170 50 L190 50 Z" fill="#f97316" opacity="0.4"/>
+                            </g>
+                        </svg>
+                        
+                        <!-- Elementos flutuantes -->
+                        <div class="absolute top-4 right-4 bg-white bg-opacity-20 p-2 rounded-lg animate-bounce">
+                            <svg class="w-6 h-6 text-laranja" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="absolute bottom-8 left-4 bg-white bg-opacity-20 p-2 rounded-lg animate-bounce" style="animation-delay: 0.5s;">
+                            <svg class="w-6 h-6 text-laranja" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0013 3.06V1h-2v2.06A8.994 8.994 0 003.06 11H1v2h2.06A8.994 8.994 0 0011 20.94V23h2v-2.06A8.994 8.994 0 0020.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-laranja">98%</div>
+                    <div class="text-lg">Taxa de Recuperação</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-laranja">24/7</div>
+                    <div class="text-lg">Monitoramento</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-laranja">5min</div>
+                    <div class="text-lg">Tempo de Resposta</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
+    <section id="servicos" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center text-azul-escuro mb-12">
+                Nossos Serviços de Proteção
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Rastreamento -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="bg-azul-escuro p-4 rounded-lg w-16 h-16 flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0013 3.06V1h-2v2.06A8.994 8.994 0 003.06 11H1v2h2.06A8.994 8.994 0 0011 20.94V23h2v-2.06A8.994 8.994 0 0020.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-azul-escuro mb-4">Rastreamento GPS</h4>
+                    <p class="text-gray-600 mb-6">Localização precisa em tempo real com tecnologia GPS de última geração. Acompanhe seu veículo pelo app ou central 24h.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><span class="text-laranja mr-2">✓</span> Localização em tempo real</li>
+                        <li class="flex items-center"><span class="text-laranja mr-2">✓</span> Histórico de trajetos</li>
+                        <li class="flex items-center"><span class="text-laranja mr-2">✓</span> Alertas de movimento</li>
+                    </ul>
+                </div>
+
+                <!-- Monitoramento -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="bg-laranja p-4 rounded-lg w-16 h-16 flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-azul-escuro mb-4">Monitoramento 24h</h4>
+                    <p class="text-gray-600 mb-6">Central de monitoramento com operadores especializados trabalhando 24 horas por dia para sua segurança.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><span class="text-laranja mr-2">✓</span> Operadores especializados</li>
+                        <li class="flex items-center"><span class="text-laranja mr-2">✓</span> Plantão 24/7/365</li>
+                        <li class="flex items-center"><span class="text-laranja mr-2">✓</span> Análise comportamental</li>
+                    </ul>
+                </div>
+
+                <!-- Pronta Resposta -->
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow border-2 border-laranja">
+                    <div class="bg-azul-escuro p-4 rounded-lg w-16 h-16 flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42A8.954 8.954 0 0013 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/>
+                        </svg>
+                    </div>
+                    <h4 class="text-2xl font-bold text-azul-escuro mb-4">Pronta Resposta</h4>
+                    <p class="text-gray-600 mb-6">Equipes especializadas se deslocam imediatamente em casos de roubo ou furto para recuperação do veículo.</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex items-center"><span class="text-laranja mr-2">✓</span> Resposta em até 5 minutos</li>
+                        <li class="flex items-center"><span class="text-laranja mr-2">✓</span> Equipes especializadas</li>
+                        <li class="flex items-center"><span class="text-laranja mr-2">✓</span> Apoio policial</li>
+                    </ul>
+                    <div class="mt-4 bg-laranja text-white px-3 py-1 rounded-full text-sm font-semibold inline-block">
+                        🏆 Serviço Premium
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center text-azul-escuro mb-12">
+                Como Funciona Nossa Proteção
+            </h3>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="bg-laranja text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+                    <h4 class="text-xl font-semibold text-azul-escuro mb-2">Instalação</h4>
+                    <p class="text-gray-600">Instalamos o equipamento em seu veículo com tecnologia invisível</p>
+                    
+                    <!-- Ilustração de instalação -->
+                    <div class="mt-4">
+                        <svg class="w-20 h-20 mx-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="40" width="60" height="30" rx="5" fill="#f97316"/>
+                            <rect x="25" y="30" width="50" height="20" rx="3" fill="#ea580c"/>
+                            <circle cx="30" cy="70" r="5" fill="#374151"/>
+                            <circle cx="70" cy="70" r="5" fill="#374151"/>
+                            <rect x="45" y="15" width="2" height="10" fill="#1e3a8a"/>
+                            <circle cx="46" cy="12" r="3" fill="#f97316"/>
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-laranja text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+                    <h4 class="text-xl font-semibold text-azul-escuro mb-2">Monitoramento</h4>
+                    <p class="text-gray-600">Nossa central monitora 24h com alertas automáticos</p>
+                    
+                    <!-- Ilustração de monitoramento -->
+                    <div class="mt-4">
+                        <svg class="w-20 h-20 mx-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="20" y="30" width="60" height="40" rx="5" fill="#1e3a8a"/>
+                            <rect x="25" y="35" width="50" height="30" rx="2" fill="#000"/>
+                            <circle cx="40" cy="50" r="3" fill="#f97316"/>
+                            <circle cx="60" cy="45" r="3" fill="#f97316"/>
+                            <g class="animate-pulse">
+                                <circle cx="50" cy="20" r="8" fill="none" stroke="#f97316" stroke-width="2" opacity="0.6"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-laranja text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+                    <h4 class="text-xl font-semibold text-azul-escuro mb-2">Detecção</h4>
+                    <p class="text-gray-600">Sistema detecta movimentação suspeita instantaneamente</p>
+                    
+                    <!-- Ilustração de detecção -->
+                    <div class="mt-4">
+                        <svg class="w-20 h-20 mx-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="30" fill="#ef4444" opacity="0.2"/>
+                            <circle cx="50" cy="50" r="20" fill="#ef4444" opacity="0.4"/>
+                            <circle cx="50" cy="50" r="10" fill="#ef4444"/>
+                            <text x="50" y="55" text-anchor="middle" fill="white" font-size="8" font-weight="bold">!</text>
+                            <g class="animate-pulse">
+                                <path d="M50 20 L45 15 L55 15 Z" fill="#f97316"/>
+                                <path d="M70 30 L65 25 L75 25 Z" fill="#f97316"/>
+                                <path d="M30 30 L25 25 L35 25 Z" fill="#f97316"/>
+                            </g>
+                        </svg>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-laranja text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">4</div>
+                    <h4 class="text-xl font-semibold text-azul-escuro mb-2">Recuperação</h4>
+                    <p class="text-gray-600">Equipe se desloca imediatamente para recuperar seu veículo</p>
+                    
+                    <!-- Ilustração de recuperação -->
+                    <div class="mt-4">
+                        <svg class="w-20 h-20 mx-auto" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="30" y="50" width="40" height="20" rx="5" fill="#1e3a8a"/>
+                            <rect x="35" y="45" width="30" height="10" rx="2" fill="#3b82f6"/>
+                            <circle cx="40" cy="70" r="4" fill="#374151"/>
+                            <circle cx="60" cy="70" r="4" fill="#374151"/>
+                            <rect x="45" y="40" width="10" height="4" rx="2" fill="#ef4444"/>
+                            <circle cx="50" cy="42" r="1" fill="#fbbf24" class="animate-pulse"/>
+                            <path d="M20 30 L15 25 L25 25 Z" fill="#059669"/>
+                            <path d="M80 30 L75 25 L85 25 Z" fill="#059669"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Smartphone App Illustration -->
+            <div class="mt-16 text-center">
+                <h4 class="text-2xl font-bold text-azul-escuro mb-8">Controle Total pelo App FREITAS SAT</h4>
+                <div class="flex justify-center">
+                    <div class="relative">
+                        <svg class="w-64 h-80" viewBox="0 0 200 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Smartphone -->
+                            <rect x="20" y="20" width="160" height="280" rx="25" fill="#1e3a8a"/>
+                            <rect x="30" y="40" width="140" height="240" rx="15" fill="#000"/>
+                            
+                            <!-- Tela do App -->
+                            <rect x="35" y="45" width="130" height="230" rx="10" fill="#f8fafc"/>
+                            
+                            <!-- Header do App -->
+                            <rect x="35" y="45" width="130" height="40" rx="10" fill="#f97316"/>
+                            <text x="100" y="65" text-anchor="middle" fill="white" font-size="12" font-weight="bold">FREITAS SAT</text>
+                            
+                            <!-- Mapa -->
+                            <rect x="45" y="95" width="110" height="80" rx="5" fill="#e5e7eb"/>
+                            <circle cx="100" cy="135" r="8" fill="#f97316"/>
+                            <text x="100" y="140" text-anchor="middle" fill="white" font-size="8" font-weight="bold">📍</text>
+                            
+                            <!-- Status -->
+                            <rect x="45" y="185" width="110" height="25" rx="5" fill="#dcfce7"/>
+                            <text x="100" y="200" text-anchor="middle" fill="#16a34a" font-size="10" font-weight="bold">✓ Veículo Protegido</text>
+                            
+                            <!-- Botões -->
+                            <rect x="45" y="220" width="50" height="25" rx="5" fill="#1e3a8a"/>
+                            <text x="70" y="235" text-anchor="middle" fill="white" font-size="8">Localizar</text>
+                            
+                            <rect x="105" y="220" width="50" height="25" rx="5" fill="#ef4444"/>
+                            <text x="130" y="235" text-anchor="middle" fill="white" font-size="8">Emergência</text>
+                            
+                            <!-- Informações -->
+                            <text x="50" y="260" fill="#374151" font-size="8">Última localização:</text>
+                            <text x="50" y="270" fill="#6b7280" font-size="7">Av. Paulista, 1000 - SP</text>
+                            
+                            <!-- Home button -->
+                            <circle cx="100" cy="295" r="8" fill="#6b7280"/>
+                        </svg>
+                        
+                        <!-- Elementos flutuantes -->
+                        <div class="absolute -top-2 -right-2 bg-laranja text-white p-2 rounded-full animate-bounce">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="absolute -bottom-2 -left-2 bg-azul-escuro text-white p-2 rounded-full animate-bounce" style="animation-delay: 0.5s;">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0013 3.06V1h-2v2.06A8.994 8.994 0 003.06 11H1v2h2.06A8.994 8.994 0 0011 20.94V23h2v-2.06A8.994 8.994 0 0020.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-gray-600 mt-4 max-w-md mx-auto">
+                    Acompanhe seu veículo em tempo real, receba alertas instantâneos e acione a equipe de emergência com um toque.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-16 bg-azul-escuro text-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-4xl font-bold mb-6">
+                        Sobre a <span class="text-laranja">FREITAS SAT</span>
+                    </h3>
+                    <p class="text-xl mb-6 opacity-90">
+                        Somos especialistas em segurança veicular com mais de 10 anos de experiência no mercado. Nossa missão é proteger seu patrimônio com tecnologia de ponta e atendimento humanizado.
+                    </p>
+                    
+                    <!-- Imagem da Central de Monitoramento -->
+                    <div class="bg-white bg-opacity-10 p-6 rounded-xl mb-6">
+                        <svg class="w-full h-48" viewBox="0 0 600 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Fundo da central -->
+                            <rect width="600" height="300" fill="#1e3a8a" rx="10"/>
+                            
+                            <!-- Monitores -->
+                            <rect x="50" y="80" width="120" height="80" rx="5" fill="#374151"/>
+                            <rect x="55" y="85" width="110" height="70" rx="3" fill="#000"/>
+                            <rect x="60" y="90" width="100" height="60" rx="2" fill="#1e40af"/>
+                            
+                            <rect x="200" y="80" width="120" height="80" rx="5" fill="#374151"/>
+                            <rect x="205" y="85" width="110" height="70" rx="3" fill="#000"/>
+                            <rect x="210" y="90" width="100" height="60" rx="2" fill="#059669"/>
+                            
+                            <rect x="350" y="80" width="120" height="80" rx="5" fill="#374151"/>
+                            <rect x="355" y="85" width="110" height="70" rx="3" fill="#000"/>
+                            <rect x="360" y="90" width="100" height="60" rx="2" fill="#dc2626"/>
+                            
+                            <!-- Operador -->
+                            <circle cx="500" cy="120" r="25" fill="#f97316"/>
+                            <rect x="485" y="145" width="30" height="40" rx="5" fill="#1e3a8a"/>
+                            
+                            <!-- Mapa nos monitores -->
+                            <g opacity="0.8">
+                                <!-- Monitor 1 - Mapa -->
+                                <circle cx="90" cy="110" r="3" fill="#f97316"/>
+                                <circle cx="120" cy="125" r="3" fill="#f97316"/>
+                                <circle cx="75" cy="135" r="3" fill="#ef4444"/>
+                                
+                                <!-- Monitor 2 - Gráficos -->
+                                <rect x="220" y="130" width="15" height="15" fill="#f97316"/>
+                                <rect x="240" y="120" width="15" height="25" fill="#f97316"/>
+                                <rect x="260" y="110" width="15" height="35" fill="#f97316"/>
+                                
+                                <!-- Monitor 3 - Alertas -->
+                                <text x="380" y="110" fill="#f97316" font-size="8" font-weight="bold">ALERTA</text>
+                                <text x="380" y="125" fill="#fbbf24" font-size="6">Veículo em movimento</text>
+                                <text x="380" y="135" fill="#fbbf24" font-size="6">Localização: SP</text>
+                            </g>
+                            
+                            <!-- Antenas no teto -->
+                            <rect x="100" y="20" width="4" height="30" fill="#f97316"/>
+                            <rect x="200" y="15" width="4" height="35" fill="#f97316"/>
+                            <rect x="300" y="25" width="4" height="25" fill="#f97316"/>
+                            
+                            <!-- Sinais -->
+                            <g class="animate-pulse">
+                                <circle cx="102" cy="15" r="8" fill="none" stroke="#f97316" stroke-width="2" opacity="0.6"/>
+                                <circle cx="102" cy="15" r="15" fill="none" stroke="#f97316" stroke-width="1" opacity="0.3"/>
+                                <circle cx="202" cy="10" r="8" fill="none" stroke="#f97316" stroke-width="2" opacity="0.6"/>
+                                <circle cx="302" cy="20" r="8" fill="none" stroke="#f97316" stroke-width="2" opacity="0.6"/>
+                            </g>
+                            
+                            <!-- Texto -->
+                            <text x="50" y="250" fill="white" font-size="16" font-weight="bold">Central de Monitoramento 24h</text>
+                            <text x="50" y="270" fill="#f97316" font-size="12">Tecnologia avançada • Equipe especializada</text>
+                        </svg>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-laranja p-2 rounded-full">
+                                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <span class="text-lg">Mais de 5.000 veículos protegidos</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-laranja p-2 rounded-full">
+                                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <span class="text-lg">Equipe técnica certificada</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <div class="bg-laranja p-2 rounded-full">
+                                <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <span class="text-lg">Tecnologia de última geração</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-laranja p-8 rounded-xl">
+                    <h4 class="text-2xl font-bold mb-6">Por que escolher a FREITAS SAT?</h4>
+                    
+                    <!-- Ilustração da Equipe de Resposta -->
+                    <div class="bg-white bg-opacity-20 p-4 rounded-lg mb-6">
+                        <svg class="w-full h-32" viewBox="0 0 400 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Fundo -->
+                            <rect width="400" height="150" fill="rgba(255,255,255,0.1)" rx="8"/>
+                            
+                            <!-- Equipe de Resposta -->
+                            <!-- Pessoa 1 -->
+                            <circle cx="80" cy="50" r="15" fill="#1e3a8a"/>
+                            <rect x="70" y="65" width="20" height="30" rx="3" fill="#1e3a8a"/>
+                            <rect x="65" y="70" width="30" height="15" rx="2" fill="#fbbf24"/>
+                            
+                            <!-- Pessoa 2 -->
+                            <circle cx="150" cy="50" r="15" fill="#1e3a8a"/>
+                            <rect x="140" y="65" width="20" height="30" rx="3" fill="#1e3a8a"/>
+                            <rect x="135" y="70" width="30" height="15" rx="2" fill="#fbbf24"/>
+                            
+                            <!-- Veículo de Resposta -->
+                            <rect x="220" y="60" width="80" height="40" rx="8" fill="#1e3a8a"/>
+                            <rect x="230" y="50" width="60" height="20" rx="5" fill="#3b82f6"/>
+                            <circle cx="240" cy="100" r="8" fill="#374151"/>
+                            <circle cx="280" cy="100" r="8" fill="#374151"/>
+                            
+                            <!-- Sirene -->
+                            <rect x="250" y="45" width="20" height="8" rx="4" fill="#ef4444"/>
+                            <circle cx="260" cy="49" r="2" fill="#fbbf24" class="animate-pulse"/>
+                            
+                            <!-- Sinais de comunicação -->
+                            <g class="animate-pulse">
+                                <path d="M320 30 L315 25 L325 25 Z" fill="#fbbf24" opacity="0.8"/>
+                                <path d="M330 35 L325 30 L335 30 Z" fill="#fbbf24" opacity="0.6"/>
+                                <path d="M340 40 L335 35 L345 35 Z" fill="#fbbf24" opacity="0.4"/>
+                            </g>
+                            
+                            <!-- Texto -->
+                            <text x="50" y="130" fill="white" font-size="12" font-weight="bold">Equipe de Pronta Resposta</text>
+                            <text x="250" y="130" fill="white" font-size="10">Deslocamento Imediato</text>
+                        </svg>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <h5 class="font-semibold mb-2">🛡️ Proteção Completa</h5>
+                            <p class="text-sm opacity-90">Rastreamento + Monitoramento + Recuperação em um só serviço</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <h5 class="font-semibold mb-2">⚡ Resposta Rápida</h5>
+                            <p class="text-sm opacity-90">Equipes estrategicamente posicionadas para atendimento imediato</p>
+                        </div>
+                        <div class="bg-white bg-opacity-20 p-4 rounded-lg">
+                            <h5 class="font-semibold mb-2">📱 App Exclusivo</h5>
+                            <p class="text-sm opacity-90">Controle total do seu veículo na palma da sua mão</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-laranja to-laranja-claro text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-4xl font-bold mb-6">
+                Não Espere Ser a Próxima Vítima!
+            </h3>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                Proteja seu veículo agora mesmo com a tecnologia mais avançada do mercado. Orçamento gratuito em 24 horas.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
+                <button class="bg-white text-laranja px-8 py-4 rounded-lg text-lg font-semibold hover:bg-gray-100 transition-all pulse-animation">
+                    📞 (11) 9999-9999
+                </button>
+                <button class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-laranja transition-all">
+                    💬 WhatsApp
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center text-azul-escuro mb-12">
+                Entre em Contato
+            </h3>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h4 class="text-2xl font-bold text-azul-escuro mb-6">Fale Conosco</h4>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-laranja p-3 rounded-lg">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-azul-escuro">Telefone</h5>
+                                <p class="text-gray-600">(11) 9999-9999</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-laranja p-3 rounded-lg">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-azul-escuro">E-mail</h5>
+                                <p class="text-gray-600">contato@freitassat.com.br</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-laranja p-3 rounded-lg">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-azul-escuro">Endereço</h5>
+                                <p class="text-gray-600">São Paulo - SP</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h4 class="text-2xl font-bold text-azul-escuro mb-6">Solicite seu Orçamento</h4>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Nome Completo</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-laranja focus:border-transparent" placeholder="Seu nome completo">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
+                            <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-laranja focus:border-transparent" placeholder="(11) 99999-9999">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Modelo do Veículo</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-laranja focus:border-transparent" placeholder="Ex: Honda Civic 2020">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Mensagem</label>
+                            <textarea rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-laranja focus:border-transparent" placeholder="Conte-nos mais sobre suas necessidades..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-laranja text-white py-3 rounded-lg font-semibold hover:bg-laranja-claro transition-colors">
+                            Enviar Solicitação
+                        </button>
+                    </form>
+                    <p class="text-sm text-gray-500 mt-4 text-center">
+                        <span class="text-azul-escuro font-semibold">Nota:</span> Este é um formulário demonstrativo. Entre em contato pelos canais oficiais.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-azul-escuro text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                    <div class="bg-laranja p-2 rounded-lg">
+                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h5 class="text-xl font-bold">FREITAS SAT</h5>
+                        <p class="text-sm opacity-75">Proteção Veicular Inteligente</p>
+                    </div>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-sm opacity-75">© 2024 FREITAS SAT. Todos os direitos reservados.</p>
+                    <p class="text-sm opacity-75">Desenvolvido com tecnologia e segurança</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling para links de navegação
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animação de entrada dos elementos
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('slide-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos para animação
+        document.querySelectorAll('section > div').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Funcionalidade dos botões
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('Orçamento') || this.textContent.includes('Proteção') || this.textContent.includes('Especialista')) {
+                    alert('Obrigado pelo interesse! Entre em contato conosco pelos canais oficiais para mais informações.');
+                }
+            });
+        });
+
+        // Funcionalidade do formulário
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Obrigado! Sua solicitação foi recebida. Entraremos em contato em breve.');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97975d66936602f6',t:'MTc1NjkyNDcxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
